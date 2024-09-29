@@ -45,20 +45,32 @@ export default function MovieList() {
 
 
                         <div className="movie-infos">
-                            <p className="movie-title">{movie.title}</p>
+                            <p className="movie-title">
+                                {movie.title}
+                            </p>
+
                             <div className="hidden-content">
-                                <p className="description">{movie.overview}</p>
+                                {movie.overview &&
+                                    <p className="description">
+                                        {movie.overview.length > 200
+                                            ? `${movie.overview.substring(0, 275)}...`
+                                            : movie.overview
+                                        }
+                                    </p>
+                                }
+
+
+
+                                {/* Aqui você integra o StarRating */}
+                                <StarRating rating={movie.vote_average} />
+
+
+                                <p>{movie.vote_average}</p>
+
+                                <button className="btn-default">
+                                    Ver mais
+                                </button>
                             </div>
-
-                            {/* Aqui você integra o StarRating */}
-                            <StarRating rating={movie.vote_average} />
-
-
-                            <p>{movie.vote_average}</p>
-
-                            <button className="btn-default">
-                                Ver mais
-                            </button>
                         </div>
                     </div>
                 </li>
